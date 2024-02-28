@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class encontrar_lista{
+public class EncontrarLista{
   public static void main(String[] args){
     
     int[] lista = {32, 87, 3, 689, 12, 1076, 2000, 8, 622, 127};
