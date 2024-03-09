@@ -9,3 +9,9 @@ Nele possui testes, projetos e exercícios de aulas.
 
 ## :dart: Status do projeto
 * ➕:  In progress
+
+## Projetos em andamento
+* Torre de Hanui
+* Convertor de decimal, binário e hexadecimal
+* Calculadora
+* App
