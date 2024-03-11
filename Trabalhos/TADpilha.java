@@ -7,7 +7,7 @@ class MinhaPilha {
   private int topo;
   private int contador;
 
-  // Construtor ????????
+  // Classe construtor
   public MinhaPilha(int tamanho) {
     tamanhoMaximo = tamanho;
     arrayPilha = new char[tamanhoMaximo];
