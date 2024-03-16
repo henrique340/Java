@@ -2,23 +2,19 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "C/C++ Runner: Debug Session",
-      "type": "cppdbg",
+      "type": "java",
+      "name": "Fatoracao",
       "request": "launch",
-      "args": [],
-      "stopAtEntry": false,
-      "externalConsole": true,
-      "cwd": "c:/Users/55119/Desktop/JAva/exercicios_aula",
-      "program": "c:/Users/55119/Desktop/JAva/exercicios_aula/build/Debug/outDebug",
-      "MIMode": "gdb",
-      "miDebuggerPath": "gdb",
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        }
-      ]
+      "mainClass": "Fatoracao",
+      "projectName": "JAva_4c69ed6a"
+    },
+    {
+      "name": "Java Debug",
+      "type": "java",
+      "request": "launch",
+      "mainClass": "Fatoracao",
+      "projectName": "Fatoracao",
+      "args": []
     }
   ]
 }
