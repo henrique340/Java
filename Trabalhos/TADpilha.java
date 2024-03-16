@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-// Classe pilha
+// Objeto
 class MinhaPilha {
   private int tamanhoMaximo;
   private char[] arrayPilha;
