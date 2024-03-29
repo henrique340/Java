@@ -30,6 +30,14 @@ class MinhaPilha{
   public boolean isEmpty(){
     return topo == -1;
   }
+
+  public int get(int index){
+    return arrayPilha[index];
+  }
+
+  public void set(int index, int num){
+    arrayPilha[index] = num;
+  }
 }
 
 
@@ -38,23 +46,25 @@ public class UnicaoOrdenada {
   public static void main(String[] args){
 
     // Primeiro input
-    System.out.print("Digite os numeros separados por virgula: ");
+    System.out.print("\nDigite os numeros separados por virgula: ");
     Scanner scanner = new Scanner(System.in);
     String input = scanner.nextLine();        // Recebe a String inteira
     String[] fila1 = input.split(",");  // Separa os numeros por virgula
-    System.out.println("A fila Q1 ordenada fica assim: ");
+    System.out.print("\nA fila Q1 ordenada fica assim: ");
     String filaOrdenadaQ1 = ordenarUma(fila1);  // Armazena a String ordenada
-    imprimirString(filaOrdenadaQ1);
+    imprimirString(filaOrdenadaQ1);  // imprime a fila ordenada
 
     // Segundo input
-    System.out.println("\nDigite outros números separados por virgula: ");
+    System.out.print("\nDigite outros numeros separados por virgula: ");
     Scanner scanner2 = new Scanner(System.in);
     String input2 = scanner2.nextLine();       // Recebe a String inteira
     String[] fila2 = input2.split(",");  // Separa os numeros por virgula
-    System.out.println("A fila Q2 ordenada fica assim: ");
+    System.out.print("\nA fila Q2 ordenada fica assim: ");
     String filaOrdenadaQ2 = ordenarUma(fila2);  // Armazena a String ordenada
-    imprimirString(filaOrdenadaQ2);
+    imprimirString(filaOrdenadaQ2);  // imprime a fila ordenada
 
+
+    // Resultado novaFilaOrdenada
     System.out.println("\nA nova fila fica assim: ");
     String novaFilaOrdenada = ordenarDuas(fila1, fila2);
     imprimirString(novaFilaOrdenada);
@@ -73,16 +83,14 @@ public class UnicaoOrdenada {
     }
 
     // Ordenação em si (Bubble Sort)
-    for (i=0; i<pilha.size() -1; i++){
-      for (j=0; j<pilha.size() -i; j++){
-        int num1 = pilha.pop();   // Armazena o último termo
-        int num2 = pilha.pop();   // Armazena o penúltimo termo
-        if (num1 > num2){
-          pilha.push(num1);
-          pilha.push(num2);
-        } else {
-          pilha.push(num2);
-          pilha.push(num1);
+    for (i=pilha.size(); i>0; i--){
+      for (j=0; j<i-1; j++){
+        int num1 = pilha.get(j);
+        int num2 = pilha.get(j+1);
+
+        if (num1 < num2){
+          pilha.set(j, num2);
+          pilha.set(j+1, num1);
         }
       }
     }
@@ -115,24 +123,24 @@ public class UnicaoOrdenada {
     }
 
     // Ordenação em si (Bubble Sort)
-    for (i=0; i<novaFila.size(); i++){
-      for (j=0; j<novaFila.size(); j++){
-        int num1 = novaFila.pop();   // Armazena o último termo
-        int num2 = novaFila.pop();   // Armazena o penúltimo termo
-        if (num1 > num2){
-          novaFila.push(num1);
-        } else {
-          novaFila.push(num2);
+    for (i=novaFila.size(); i>0; i--){
+      for (j=0; j<i-1; j++){
+        int num1 = novaFila.get(j);
+        int num2 = novaFila.get(j+1);
+
+        if (num1 < num2){
+          novaFila.set(j, num2);
+          novaFila.set(j+1, num1);
         }
       }
     }
 
     // Construindo uma string com os elementos da pilha
-    StringBuilder pilhaString = new StringBuilder();
+    StringBuilder pilhaString2 = new StringBuilder();
     while (!novaFila.isEmpty()){
-      pilhaString.append(novaFila.pop()).append(" ");
+      pilhaString2.append(novaFila.pop()).append(" ");
     }
-    return pilhaString.toString().trim();
+    return pilhaString2.toString().trim();
   }
 
 
