@@ -3,6 +3,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "UnicaoOrdenada",
+      "request": "launch",
+      "mainClass": "UnicaoOrdenada",
+      "projectName": "JAva_4c69ed6a"
+    },
+    {
+      "type": "java",
+      "name": "InverterFila",
+      "request": "launch",
+      "mainClass": "InverterFila",
+      "projectName": "JAva_4c69ed6a"
+    },
+    {
+      "type": "java",
       "name": "Fatoracao",
       "request": "launch",
       "mainClass": "Fatoracao",
