@@ -1,8 +1,38 @@
+//Nome: Henrique Yuji Isogai Yoneoka      RA: 10418153
+//Nome: André Moreira Guimarães           RA: 10416590
 
 // Importanto biblioteca Scanner
 import java.util.Scanner;
 
 // Classe Minha Pilha
+class MinhaPilhaInteiro {
+    private int tamanhoMaximo;
+    private int[] listaPilha;
+    private int topo;
+
+    public MinhaPilhaInteiro(int tamanho) {
+        tamanhoMaximo = tamanho;
+        listaPilha = new int[tamanhoMaximo];
+        topo = -1;
+    }
+
+    public void push(int valor) {
+        listaPilha[++topo] = valor;
+    }
+
+    public int pop() {
+        if (isEmpty()) {
+            System.out.println("A pilha está vazia");
+            return 0; // Retorna 0 ou outro valor padrão se a pilha estiver vazia
+        }
+        return listaPilha[topo--];
+    }
+
+    public boolean isEmpty() {
+        return topo == -1;
+    }
+}
+
 class MinhaPilha {
   private int tamanhoMaximo;
   private char[] listaPilha;
@@ -75,6 +105,21 @@ public class ExpressoesMat {
         System.out.print("Digite a expressao infixa: ");
         Scanner input = new Scanner(System.in);
         expressaoInfixa = input.nextLine();
+        int contador = 0;
+        int contador2 = 0;
+        for (int i = 0; i < expressaoInfixa.length(); i++){
+          char caracter = expressaoInfixa.charAt(i);
+          if(caracter == '('){
+            contador++;
+          }
+          if(caracter == ')'){
+            contador2++;
+          }
+        }
+        if (contador != contador2){
+          //throw new RuntimeException("Identação da expressão infixa está errada, tente novamente.");
+          System.out.println("ERRO, identação errada.");
+        }
 
       } else if (opc == 2) {
         // Atribui valores para as variáveis
@@ -131,8 +176,9 @@ public class ExpressoesMat {
         return 1; // Para a menor prioridade
       case '*':
       case '/':
+        return 2;
       case '^':
-        return 2; // Para a maior prioridade
+      return 3; // Para a maior prioridade
     }
     return -1;
   }
@@ -143,12 +189,10 @@ public class ExpressoesMat {
     MinhaPilha pilha = new MinhaPilha(expressao.length());
     for (int i = 0; i < expressao.length(); i++) {
       char caractere = expressao.charAt(i);
-
       // Se um caractere for uma letra ou número
       if (Character.isLetter(caractere)) {
         expressaoPosfixa.append(caractere);
       }
-
       // Se o caractere for um operando
       else if (caractere == '*' || caractere == '/' || caractere == '^' || caractere == '+' || caractere == '-') {
         while (!pilha.isEmpty() && prioridade(caractere) <= prioridade(pilha.ultimoOperador())) {
@@ -156,15 +200,16 @@ public class ExpressoesMat {
         }
         pilha.push(caractere);
       } else if (caractere == '(') {
+        
         pilha.push(caractere);
       } else if (caractere == ')') {
+        
         while (!pilha.isEmpty() && pilha.topo() != '(') {
           expressaoPosfixa.append(pilha.pop());
         }
         pilha.pop(); // Desempilha o ')'
       }
     }
-
     while (!pilha.isEmpty()) {
       expressaoPosfixa.append(pilha.pop());
     }
@@ -172,41 +217,44 @@ public class ExpressoesMat {
     return expressaoPosfixa.toString();
   }
 
-  // Função que calcula o resultado final a parti da expressao posfixa
+  // Função que calcula o resultado final a partir da expressão posfixa
   public static int atribuirValores(String expressao, int[] valores) {
-    MinhaPilha pilha = new MinhaPilha(expressao.length());
+    MinhaPilhaInteiro pilha = new MinhaPilhaInteiro(expressao.length());
     for (int i = 0; i < expressao.length(); i++) {
-      char caractere = expressao.charAt(i);
-      // Se for operando empilha
-      if (Character.isLetter(caractere)) {
-        int indice = Character.toUpperCase(caractere) - 'A'; // Achando o index da variável de acordo com a posição do alfabeto
-        int valor = valores[indice]; // Obtendo o valor associado à variável
-        pilha.push((char) (valor + '0')); // Convertendo o valor em char e empilhando
-        // Se for operador desempilha os dois últimos e empilha o resultado
-      } else if (caractere == '+' || caractere == '-' || caractere == '*' || caractere == '/' || caractere == '^') {
-        int valor2 = Character.getNumericValue(pilha.pop()); // Desempilhando o segundo operando
-        int valor1 = Character.getNumericValue(pilha.pop()); // Desempilhando o primeiro operando
-        int resultado = 0;
-        switch (caractere) {
-          case '+':
-            resultado = valor1 + valor2;
-            break;
-          case '-':
-            resultado = valor1 - valor2;
-            break;
-          case '*':
-            resultado = valor1 * valor2;
-            break;
-          case '/':
-            resultado = valor1 / valor2;
-            break;
-          case '^':
-            resultado = (int) Math.pow(valor1, valor2); // Converter o dooble em int
-            break;
+        char caractere = expressao.charAt(i);
+        // Se for operando empilha
+        if (Character.isDigit(caractere)) {
+            int valor = Character.getNumericValue(caractere); // Convertendo o caractere em número
+            pilha.push(valor); // Empilhando o número
+        } else if (Character.isLetter(caractere)) {
+            // Se for uma variável, busca o valor correspondente no array de valores
+            int indice = Character.toUpperCase(caractere) - 'A'; // Convertendo a letra para o índice do array
+            pilha.push(valores[indice]); // Empilhando o valor da variável
+        } else if (caractere == '+' || caractere == '-' || caractere == '*' || caractere == '/' || caractere == '^') {
+            // Se for operador, desempilha os dois últimos, realiza a operação e empilha o resultado
+            int valor2 = pilha.pop();
+            int valor1 = pilha.pop();
+            int resultado = 0;
+            switch (caractere) {
+                case '+':
+                    resultado = valor1 + valor2;
+                    break;
+                case '-':
+                    resultado = valor1 - valor2;
+                    break;
+                case '*':
+                    resultado = valor1 * valor2;
+                    break;
+                case '/':
+                    resultado = valor1 / valor2;
+                    break;
+                case '^':
+                    resultado = (int) Math.pow(valor1, valor2); // Converter o double em int
+                    break;
+            }
+            pilha.push(resultado); // Empilhando o resultado
         }
-        pilha.push((char) (resultado + '0')); // Convertendo o resultado em char e empilhando
-      }
     }
-    return Character.getNumericValue(pilha.pop()); // Convertendo o resultado final para int
+    return pilha.pop(); // Retorna o resultado final
   }
 }
