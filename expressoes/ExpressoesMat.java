@@ -1,3 +1,9 @@
+package expressoes;
+
+import java.util.Scanner;
+
+
+
 public class ExpressoesMat {
   public static void main(String[] args) {
 
