@@ -115,7 +115,7 @@ class LinkedList{
   }
 }
 
-public class Excluir {
+public class ParImpar {
   public static void main(String[] args){
     LinkedList listaEncadeada = new LinkedList();
 
@@ -131,13 +131,13 @@ public class Excluir {
     Node atual = listaEncadeada.getFront();
     while (atual != null){
       if (atual.getData() % 2 == 0){
+        int valor = atual.getData();
         listaEncadeada.removeData(atual.getData());
+        listaEncadeada.insertFront(valor);
       }
       atual = atual.getNext();
     }
-
     atual = listaEncadeada.getFront();
-    //Percorrendo a lista e imprimindo tudo
     while (atual != null){
       System.out.println(atual.getData());
       atual = atual.getNext();
