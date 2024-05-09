@@ -1,3 +1,6 @@
+// Henrique Yuji Isogai Yoneoka RA: 10418153
+// Ex6
+
 class Node{
   private int data;
   private Node next;
@@ -119,6 +122,7 @@ public class ParImpar {
   public static void main(String[] args){
     LinkedList listaEncadeada = new LinkedList();
 
+    // Adicionando números nos nós
     listaEncadeada.insertFront(1);
     listaEncadeada.insertFront(2);
     listaEncadeada.insertFront(3);
@@ -133,10 +137,12 @@ public class ParImpar {
       if (atual.getData() % 2 == 0){
         int valor = atual.getData();
         listaEncadeada.removeData(atual.getData());
-        listaEncadeada.insertFront(valor);
+        listaEncadeada.insertFront(valor); // Insere os pares no início do nó
       }
       atual = atual.getNext();
     }
+
+    // Percorrendo o nó e imprimindo os valores
     atual = listaEncadeada.getFront();
     while (atual != null){
       System.out.println(atual.getData());

@@ -1,3 +1,6 @@
+// Henrique Yuji Isogai Yoneoka RA: 10418153
+// Ex3
+
 class Node{
   private int data;
   private Node next;
@@ -63,7 +66,10 @@ public class ListaEndeada {
   public static void main(String[] args){
     LinkedList copiaLista = new LinkedList();
 
+    // Inicializando o vetor de inteiros
     int[] v = {1, 3, 5, 7, 11, 13, 17, 23, 29, 31, 41, 43};
+    
+    // Inicializando o tamanho do vetor
     int n = v.length;
 
     // Colocando elemento no final da lista
@@ -71,6 +77,8 @@ public class ListaEndeada {
       for (int i=0; i<n; i++){
         copiaLista.insertBack(v[i]);
       }
+    } else if (n == 0){
+      copiaLista.insertFront(0);
     }
 
     // Percorrendo todos os nós

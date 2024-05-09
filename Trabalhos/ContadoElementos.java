@@ -1,3 +1,6 @@
+// Henrique Yuji Isogai Yoneoka RA: 10418153
+// Ex1
+
 class Node{
   private int data;
   private Node next;
@@ -76,7 +79,7 @@ public class ContadoElementos{
     // Percorrendo todos os nós
     Node atual = listaEncadeada.getFront();
     while (atual != null){
-      if (atual.getData() %2 == 0){
+      if (atual.getData() %2 == 0){ // Contador para números pares
         contador += 1;
       }
       atual = atual.getNext();

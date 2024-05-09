@@ -1,3 +1,6 @@
+// Henrique Yuji Isogai Yoneoka RA: 10418153
+// Ex2
+
 class Node{
   private int data;
   private Node next;
@@ -72,7 +75,7 @@ public class MaiorElemeto {
 
     // Percorrendo todos os nós da lista
     Node atual = listaEncadeada.getFront();
-    int maior = atual.getData();
+    int maior = atual.getData(); // inicializa a variável maior para comparar com os valores dos nós
     while (atual != null){
       if (atual.getData() > maior){
         maior = atual.getData();

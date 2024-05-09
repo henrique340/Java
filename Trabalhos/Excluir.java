@@ -1,3 +1,6 @@
+// Henrique Yuji Isogai Yoneoka RA: 10418153
+// Ex5
+
 class Node{
   private int data;
   private Node next;
@@ -130,14 +133,14 @@ public class Excluir {
     // Percorrendo todos os Nós
     Node atual = listaEncadeada.getFront();
     while (atual != null){
-      if (atual.getData() % 2 == 0){
+      if (atual.getData() % 2 == 0){ // Remove os pares
         listaEncadeada.removeData(atual.getData());
       }
       atual = atual.getNext();
     }
 
-    atual = listaEncadeada.getFront();
     //Percorrendo a lista e imprimindo tudo
+    atual = listaEncadeada.getFront();
     while (atual != null){
       System.out.println(atual.getData());
       atual = atual.getNext();

@@ -1,3 +1,6 @@
+// Henrique Yuji Isogai Yoneoka RA: 10418153
+// Ex4
+
 class Node{
   private int data;
   private Node next;
@@ -63,6 +66,7 @@ public class Clone {
   public static void main(String[] args){
     LinkedList clone = new LinkedList();
     
+    // Inicializa a lista de inteiros
     int[] lista = {1,3,5,7,11,13,17,19,23,29,31,37,41};
 
     System.out.print("Lista: ");
@@ -72,6 +76,7 @@ public class Clone {
     }
 
     System.out.print("\nLista encadeada: ");
+    
     // Percorrendo todos os nós
     Node atual = clone.getFront();
     while (atual != null){
